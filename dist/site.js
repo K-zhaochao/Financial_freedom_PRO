@@ -26,13 +26,13 @@ function renderStages(){
  $('#stage-nav').innerHTML=stages.map(stage=>{
   const count=lessons.filter(item=>item.stage===stage.id&&completed.has(item.id)).length;
   const total=lessons.filter(item=>item.stage===stage.id).length;
-  return `<button class="stage-button ${selected===stage.id?'active':''}" type="button" data-stage="${stage.id}" ${selected===stage.id?'aria-current="step"':''}><span class="stage-number">${stage.icon}</span><strong>${stage.name}</strong><span class="stage-complete">${count}/${total}</span></button>`;
+  return `<button class="stage-button ${selected===stage.id?'active':''}" type="button" data-stage="${stage.id}" ${selected===stage.id?'aria-current="step"':''}><span class="stage-number">${stage.icon}</span><strong>${stage.name}</strong><span class="stage-complete">${stage.level} · ${count}/${total}</span></button>`;
  }).join('');
  document.querySelectorAll('[data-stage]').forEach(button=>button.addEventListener('click',()=>selectLesson(lessons.find(item=>item.stage===button.dataset.stage).id)));
 }
 function renderLessonList(){
  const selected=byId[current],stage=stages.find(item=>item.id===selected.stage),items=lessons.filter(item=>item.stage===stage.id);
- $('#rail-step').textContent=`阶段 ${stage.icon}`;
+ $('#rail-step').textContent=`${stage.level} · 阶段 ${stage.icon}`;
  $('#rail-title').textContent=stage.name;
  $('#rail-subtitle').textContent=stage.subtitle;
  $('#rail-total').textContent=`${items.length} 节短课`;
@@ -41,9 +41,9 @@ function renderLessonList(){
 }
 function renderLesson(){
  const lesson=byId[current],stage=stages.find(item=>item.id===lesson.stage),next=lessons[lesson.index+1];
- $('#lesson-panel').innerHTML=`<div class="lesson-meta"><span>阶段 ${stage.icon} / 第 ${String(lesson.index+1).padStart(2,'0')} 课</span><span class="tag">${lesson.tag}</span><span class="time">约 ${lesson.minutes} 分钟</span></div>
- <h2>${lesson.title}</h2><p class="lesson-lead">${lesson.lead}</p><div class="lesson-divider"></div><div class="section-label">这节课要弄明白</div>
- <div class="lesson-points">${lesson.points.map(([title,body],index)=>`<section class="point"><span class="point-number">${index+1}</span><div><h3>${title}</h3><p>${body}</p></div></section>`).join('')}</div>
+ $('#lesson-panel').innerHTML=`<div class="lesson-meta"><span>${stage.level} · 阶段 ${stage.icon} / 第 ${String(lesson.index+1).padStart(2,'0')} 课</span><span class="tag">${lesson.tag}</span><span class="time">约 ${lesson.minutes} 分钟</span></div>
+ <h2>${lesson.title}</h2><p class="lesson-lead">${lesson.lead}</p>${renderIllustration(lesson.id)}<div class="lesson-divider"></div><div class="section-label">这节课要弄明白</div>
+ <div class="lesson-points">${lesson.points.map(([title,body],index)=>`<section class="point"><span class="point-number">${index+1}</span><div><h3>${title}</h3><p>${body}</p></div></section>`).join('')}</div>${renderDiagram(lesson.id)}
  <div class="example-box"><strong>用一个例子想清楚</strong><p>${lesson.example}</p></div><div class="task-box"><strong>动手做一遍</strong><p>${lesson.task}</p></div>
  <div class="sources"><h3>本课参考书目与章节</h3><div class="source-list">${lesson.sources.map(([key,chapter])=>`<span class="source-pill">《${books[key].title}》 · ${chapter}</span>`).join('')}</div></div>
  <div class="lesson-actions"><button id="complete-button" class="complete-button ${completed.has(lesson.id)?'done':''}" type="button">${completed.has(lesson.id)?'✓ 已学完 · 点击取消':'标记这节已学完'}</button>${next?'<button id="next-button" class="next-button" type="button">下一课 →</button>':'<span></span>'}</div>`;

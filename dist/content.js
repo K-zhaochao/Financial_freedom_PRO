@@ -1,9 +1,9 @@
 const stages = [
-  { id: 'start', name: '先管好钱', subtitle: '让投资有稳定的起点', icon: '01', color: '#f4bd55' },
-  { id: 'market', name: '认识投资工具', subtitle: '看懂收益从哪来、风险在哪', icon: '02', color: '#7bc7b8' },
-  { id: 'fund', name: '基金入门', subtitle: '从指数基金建立方法', icon: '03', color: '#98b7ff' },
-  { id: 'stock', name: '股票与财报', subtitle: '先研究企业，再讨论价格', icon: '04', color: '#f29b8d' },
-  { id: 'portfolio', name: '组合与心态', subtitle: '形成能长期执行的规则', icon: '05', color: '#c5a7e8' }
+  { id: 'start', name: '先管好钱', subtitle: '让投资有稳定的起点', level:'入门', icon: '01', color: '#f4bd55' },
+  { id: 'market', name: '认识投资工具', subtitle: '看懂收益从哪来、风险在哪', level:'入门', icon: '02', color: '#7bc7b8' },
+  { id: 'fund', name: '基金入门', subtitle: '从指数基金建立方法', level:'入门', icon: '03', color: '#98b7ff' },
+  { id: 'stock', name: '股票与财报', subtitle: '先研究企业，再讨论价格', level:'进阶', icon: '04', color: '#f29b8d' },
+  { id: 'portfolio', name: '组合与心态', subtitle: '形成能长期执行的规则', level:'高级', icon: '05', color: '#c5a7e8' }
 ];
 
 const books = {

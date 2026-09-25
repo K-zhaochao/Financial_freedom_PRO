@@ -8,7 +8,9 @@
   <title>理财从零开始 · 书本里的投资入门课</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310233f'/%3E%3Cpath d='M16 46V18h9v28M28 46V30h9v16M40 46V23h9v23' fill='%23f4bd55'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="reader.css">
   <script src="content.js" defer></script>
+  <script src="visuals.js" defer></script>
   <script src="site.js" defer></script>
 </head>
 <body>
@@ -28,7 +30,7 @@
     <main id="lesson-content" class="workspace" tabindex="-1">
       <header class="topbar">
         <div class="mobile-brand">理财从零开始 <button id="mobile-library-button" type="button">参考书架</button></div>
-        <div class="top-eyebrow">LEARNING DESK <span class="eyebrow-line"></span> 从 0 到 1</div>
+        <div class="top-eyebrow">按书单循序学习 · 入门 → 进阶 → 高级</div>
         <div class="top-progress"><span id="progress-text">0 / 20 已学完</span><span class="progress-track"><span id="progress-fill"></span></span></div>
       </header>
 
@@ -36,7 +38,7 @@
         <div class="intro-copy">
           <div class="intro-kicker"><span class="kicker-dot"></span> 一条真正能跟着学的路径</div>
           <h1>先学会管理钱，<br><em>再学习让钱工作。</em></h1>
-          <p>20 节短课，按照「目标 → 工具 → 基金 → 股票 → 组合」推进。每节都有例子、练习和原书章节，随时可以停下来照着做。</p>
+          <p>参考 README 的入门、进阶、高级书单，20 节短课按照「目标 → 工具 → 基金 → 股票 → 组合」推进。每节都有图解、练习和原书章节。</p>
         </div>
         <div class="intro-visual" aria-hidden="true">
           <div class="visual-label">学习地图 <span>01 — 05</span></div>
@@ -64,7 +66,7 @@
     <div class="modal-backdrop" data-close="true"></div>
     <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="library-title" tabindex="-1">
       <div class="modal-head"><div><div class="modal-eyebrow">BOOKSHELF</div><h2 id="library-title">参考书架</h2></div><button id="library-close" class="icon-button" type="button" aria-label="关闭参考书架">×</button></div>
-      <p class="modal-intro">课程讲解由这些书的主题与章节启发后重新编写，未收录或公开原书全文。扫描版书籍列为延伸阅读，建议结合原书自行核对。</p>
+      <p class="modal-intro">学习顺序参考根目录 README 的「入门 → 进阶 → 高级」书单。课程讲解由原书主题与章节启发后重新编写，未收录或公开原书全文。扫描版书籍列为延伸阅读，建议结合原书自行核对。</p>
       <div id="library-list" class="library-list"></div>
     </section>
   </div>
