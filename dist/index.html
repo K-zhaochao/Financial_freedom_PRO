@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10233f">
+  <meta name="description" content="从目标、现金流、风险开始，循序学习基金、股票、财报与资产配置。课程内容参考站内标注的投资书籍。">
+  <title>理财从零开始 · 书本里的投资入门课</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310233f'/%3E%3Cpath d='M16 46V18h9v28M28 46V30h9v16M40 46V23h9v23' fill='%23f4bd55'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="content.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#lesson-content">跳到课程内容</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="学习导航">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>理财从零开始<small>你的书本学习台</small></span></div>
+      <div class="side-intro">从管好第一笔钱开始，慢慢建立自己的投资方法。</div>
+      <div class="side-caption">学习路径 <span id="lesson-count"></span></div>
+      <nav id="stage-nav" class="stage-nav" aria-label="课程阶段"></nav>
+      <div class="side-bottom">
+        <button id="library-button" class="library-button" type="button"><span aria-hidden="true">▤</span> 参考书架 <span class="library-count">17 本</span></button>
+        <p>内容为书籍观点的归纳与学习练习，不构成具体产品建议。</p>
+      </div>
+    </aside>
+
+    <main id="lesson-content" class="workspace" tabindex="-1">
+      <header class="topbar">
+        <div class="mobile-brand">理财从零开始 <button id="mobile-library-button" type="button">参考书架</button></div>
+        <div class="top-eyebrow">LEARNING DESK <span class="eyebrow-line"></span> 从 0 到 1</div>
+        <div class="top-progress"><span id="progress-text">0 / 20 已学完</span><span class="progress-track"><span id="progress-fill"></span></span></div>
+      </header>
+
+      <section class="intro-card" aria-label="课程介绍">
+        <div class="intro-copy">
+          <div class="intro-kicker"><span class="kicker-dot"></span> 一条真正能跟着学的路径</div>
+          <h1>先学会管理钱，<br><em>再学习让钱工作。</em></h1>
+          <p>20 节短课，按照「目标 → 工具 → 基金 → 股票 → 组合」推进。每节都有例子、练习和原书章节，随时可以停下来照着做。</p>
+        </div>
+        <div class="intro-visual" aria-hidden="true">
+          <div class="visual-label">学习地图 <span>01 — 05</span></div>
+          <div class="visual-steps"><span>管钱</span><b>→</b><span>工具</span><b>→</b><span>基金</span><b>→</b><span>股票</span><b>→</b><span>组合</span></div>
+          <div class="visual-chart"><span style="height:32%"></span><span style="height:46%"></span><span style="height:55%"></span><span style="height:70%"></span><span style="height:84%"></span></div>
+          <div class="visual-foot">每一步都建立在前一步之上</div>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <aside class="lesson-rail" aria-label="阶段课程">
+          <div class="rail-heading"><div><span id="rail-step" class="rail-step">阶段 01</span><h2 id="rail-title">先管好钱</h2></div><span id="rail-total" class="rail-total"></span></div>
+          <p id="rail-subtitle" class="rail-subtitle"></p>
+          <div id="lesson-list" class="lesson-list"></div>
+        </aside>
+
+        <article id="lesson-panel" class="lesson-panel" aria-live="polite"></article>
+      </div>
+
+      <footer class="page-footer"><span>把知识变成适合自己的规则。</span><span>学习内容 · 非个性化投资建议</span></footer>
+    </main>
+  </div>
+
+  <div id="library-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="true"></div>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="library-title" tabindex="-1">
+      <div class="modal-head"><div><div class="modal-eyebrow">BOOKSHELF</div><h2 id="library-title">参考书架</h2></div><button id="library-close" class="icon-button" type="button" aria-label="关闭参考书架">×</button></div>
+      <p class="modal-intro">课程讲解由这些书的主题与章节启发后重新编写，未收录或公开原书全文。扫描版书籍列为延伸阅读，建议结合原书自行核对。</p>
+      <div id="library-list" class="library-list"></div>
+    </section>
+  </div>
+</body>
+</html>
