@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#014886">
-  <meta name="description" content="从目标、现金流与风险开始，循序学习基金、股票、财报、资产配置和看盘软件。31 节课程附有图解、练习与参考资料。">
+  <meta name="description" content="从目标、现金流与风险开始，循序学习基金、股票、财报、资产配置和看盘软件。46 节深度课程附有图解、算例、案例、练习和逐节参考书导读。">
   <title>理财从零开始 · 藏书学习课程</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23015293'/%3E%3Cpath d='M14 18h36v29H14z' fill='white'/%3E%3Cpath d='M20 25h23M20 31h23M20 37h15' stroke='%23015293' stroke-width='3'/%3E%3Cpath d='M14 47h36' stroke='%23e4393c' stroke-width='4'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="portal.css">
@@ -12,21 +12,22 @@
   <link rel="stylesheet" href="github.css">
   <script src="content.js" defer></script>
   <script src="software-content.js" defer></script>
+  <script src="books-index.js" defer></script>
   <script src="visuals.js" defer></script>
   <script src="software-visuals.js" defer></script>
   <script src="site.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#lesson-content">跳到课程正文</a>
-  <div class="utility-bar"><div class="page-wrap utility-inner"><span>按藏书学习 · 入门 → 进阶 → 高级</span><div class="utility-actions"><span id="progress-text">0 / 31 已学完</span><span class="progress-track"><span id="progress-fill"></span></span><button id="library-button" type="button">参考书架（17 本）</button><a class="github-button" href="https://github.com/K-zhaochao/Financial_freedom_PRO" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 项目仓库（新窗口）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.14c-3.09.67-3.74-1.31-3.74-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.23-5.07-5.51 0-1.22.43-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.14a10.7 10.7 0 0 1 5.6 0c2.14-1.44 3.08-1.14 3.08-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.6 5.23-5.08 5.5.4.35.75 1.02.75 2.06v3.05c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub 仓库</span></a></div></div></div>
+  <div class="utility-bar"><div class="page-wrap utility-inner"><span>按藏书学习 · 入门 → 进阶 → 高级</span><div class="utility-actions"><span id="progress-text">0 / 46 已学完</span><span class="progress-track"><span id="progress-fill"></span></span><button id="library-button" type="button">参考书架 · 在线阅读</button><a class="github-button" href="https://github.com/K-zhaochao/Financial_freedom_PRO" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 项目仓库（新窗口）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.14c-3.09.67-3.74-1.31-3.74-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.23-5.07-5.51 0-1.22.43-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.14a10.7 10.7 0 0 1 5.6 0c2.14-1.44 3.08-1.14 3.08-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.6 5.23-5.08 5.5.4.35.75 1.02.75 2.06v3.05c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub 仓库</span></a></div></div></div>
 
   <header class="masthead page-wrap">
     <div class="masthead-title"><span class="masthead-rule" aria-hidden="true"></span><div><div class="site-title">理财从零开始</div><p>从目标与现金流，到基金、股票和资产配置</p></div></div>
-    <div class="masthead-meta"><strong id="lesson-count">31 节</strong><span>循序学习 · 每课附图解与练习</span><button id="mobile-library-button" type="button">参考书架</button></div>
+    <div class="masthead-meta"><strong id="lesson-count">46 节</strong><span>循序学习 · 每课附图解、算例与练习</span><button id="mobile-library-button" type="button">参考书架</button></div>
   </header>
 
   <nav class="nav-band" aria-label="学习阶段"><div id="stage-nav" class="page-wrap stage-nav"></div></nav>
-  <div class="page-wrap notice-strip"><strong>学习提示</strong><span>先看目标与风险，再研究工具和产品；按阶段学习，也可以随时查阅具体课程。</span></div>
+  <div class="page-wrap notice-strip"><strong>学习提示</strong><span>先看目标与风险，再研究工具和产品；每课约 12～16 分钟，读完请动手做一遍练习。</span></div>
 
   <main id="lesson-content" class="page-wrap main-layout" tabindex="-1">
     <article id="lesson-panel" class="lesson-panel" aria-live="polite"></article>
@@ -38,15 +39,25 @@
     </aside>
   </main>
 
-  <footer class="site-footer"><div class="page-wrap"><strong>理财从零开始</strong><span>课程内容为学习资料整理，不构成个性化投资建议。</span></div></footer>
+  <footer class="site-footer"><div class="page-wrap"><strong>理财从零开始</strong><span>课程内容为学习资料整理，不构成个性化投资建议。站内 PDF 仅供个人学习研究使用，版权归原作者与出版方所有，如有侵权请联系删除。</span></div></footer>
 
   <div id="library-modal" class="modal" hidden>
     <div class="modal-backdrop" data-close="true"></div>
     <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="library-title" tabindex="-1">
       <div class="modal-head"><div><div class="modal-eyebrow">课程资料</div><h2 id="library-title">参考书架</h2></div><button id="library-close" class="icon-button" type="button" aria-label="关闭参考书架">×</button></div>
-      <p class="modal-intro">学习顺序参考根目录 README 的「入门 → 进阶 → 高级」书单。课程讲解由原书主题与章节启发后重新编写，未收录或公开原书全文。扫描版书籍列为延伸阅读，建议结合原书自行核对。</p>
+      <p class="modal-intro">书架共 17 册，按「入门 → 进阶 → 延伸」分组。可以点「在线阅读」在站内直接翻书，也可以在新窗口打开。每课末尾会指出所依据的章节和「回原书怎么读」的导读。</p>
+      <p class="copyright-note" id="library-notice"></p>
       <div id="library-list" class="library-list"></div>
     </section>
+  </div>
+
+  <div id="reader" class="reader" hidden>
+    <div class="reader-head">
+      <div class="reader-title"><strong id="reader-title">参考书</strong><span id="reader-meta"></span></div>
+      <div class="reader-tools"><a id="reader-new" href="#" target="_blank" rel="noopener noreferrer">新窗口打开 ↗</a><button id="reader-close" type="button">关闭阅读器 ×</button></div>
+    </div>
+    <p class="reader-notice" id="reader-notice"></p>
+    <iframe id="reader-frame" title="PDF 在线阅读"></iframe>
   </div>
 </body>
 </html>

@@ -1,25 +1,29 @@
 const softwareGuide = {
-  'sw-map':{title:'一张图认清看盘界面',active:'chart',notes:['① 搜索：先确认证券代码和市场','② 自选：保存观察对象','③ 行情：读价格与成交字段','④ 图表：看分时 / K 线及周期','⑤ 盘口：区分挂单与成交','⑥ 资料：去公告和财报核实']},
-  'sw-watch':{title:'自选清单不是交易指令',active:'watch',notes:['① 按研究问题分组','② 代码、名称和市场一起核对','③ 看数据时间，避免把延迟行情当实时','④ 给每项写一条待验证的问题']},
-  'sw-quote':{title:'先读行情字段的单位与比较基准',active:'quote',notes:['① 最新价是最近成交价','② 涨跌幅一般相对昨收','③ 成交量与成交额是两种单位','④ 先核对时间，再比较数字']},
-  'sw-orderbook':{title:'五档盘口：可见委托排队示意',active:'book',notes:['① 卖一：当前可见最低卖价','② 买一：当前可见最高买价','③ 两者相差 0.01 元','④ 挂单可撤，成交另行记录']},
-  'sw-intraday':{title:'分时图：上方价格，下方成交量',active:'intraday',notes:['① 横轴：交易时间','② 纵轴：价格或相对昨收涨跌','③ 蓝线：示意价格，虚线：示意均价','④ 下方柱形：对应时段成交量']},
-  'sw-kline':{title:'一根 K 线包含四个价格',active:'kline',notes:['① 上影线顶端：最高价','② 实体两端：开盘价与收盘价','③ 下影线底端：最低价','④ 每根代表的时间取决于周期设置']},
-  'sw-ths':{title:'同花顺功能路线示意',active:'ths',notes:['① 搜索证券并核对代码','② 自选里保存观察对象','③ 分时、K 线与盘口用于读行情','④ F10 和公告用于查公司资料']},
-  'sw-east':{title:'东方财富功能路线示意',active:'east',notes:['① 自选整理研究对象','② 公告看披露日期与原文','③ 财务数据注意报告期和单位','④ 基金页核对类型、费用和跟踪标的']},
-  'sw-tv':{title:'TradingView 图表工作台示意',active:'tv',notes:['① 搜索后确认交易所','② 先设图表周期和价格坐标','③ 指标与画线帮助描述历史','④ 提醒触发后仍需重新核对信息']},
-  'sw-tgb':{title:'淘股吧热帖：三色标注法',active:'forum',notes:['① 蓝色：可回到公告核对的事实','② 黄色：作者对事实的解释','③ 红色：尚未发生的预测','④ 关注发布时间和原始出处']},
-  'sw-glossary':{title:'读帖子时，把黑话翻译成普通话',active:'slang',notes:['① “放量”先找成交量数据','② “突破”先问比较区间','③ “吃肉”是情绪口语','④ “明天”之后的结论仍是预测']}
+  'sw-map':{title:'一张图认清看盘界面',active:'chart',notes:['① 搜索：先确认证券代码、市场与品种','② 自选：保存研究对象，不是买入信号','③ 行情：读价格、涨跌与成交字段，注意时间戳','④ 图表：分时 / K 线与周期设置决定你看到什么','⑤ 盘口：区分「挂单」与「成交」两类数据','⑥ 资料：公告与定期报告才是原始依据']},
+  'sw-watch':{title:'自选清单不是交易指令',active:'watch',notes:['① 按研究问题分组，不要把股票、基金、指数混在一列','② 代码、名称、市场一起核对，避免同名标的','③ 看数据时间与权限，延迟行情不等于实时','④ 每项写一条待验证的问题，理由失效就移除','⑤ 关联到下一份要读的公告或报告期']},
+  'sw-quote':{title:'先读行情字段的单位与比较基准',active:'quote',notes:['① 最新价是最近一笔成交形成的价格','② 涨跌幅一般相对前一交易日收盘价','③ 成交量是股数或手数，成交额是金额，两者单位不同','④ 换手率、市值、振幅各有统计口径，先看软件帮助','⑤ 比较前先确认时间、市场与是否复权']},
+  'sw-orderbook':{title:'五档盘口：可见委托排队示意',active:'book',notes:['① 卖一：当前可见的最低卖出报价','② 买一：当前可见的最高买入报价','③ 两者相差 0.01 元，即买卖价差','④ 挂单可以撤销，已成交记录与未成交委托要分开看','⑤ 集合竞价与连续竞价的撮合规则不同']},
+  'sw-intraday':{title:'分时图：上方价格，下方成交量',active:'intraday',notes:['① 横轴：交易日内的交易时间，不是公司历史','② 纵轴：价格或相对昨收的涨跌百分比','③ 蓝线：示意价格，虚线：示意当日均价','④ 下方柱形：对应时段的成交量，单位与价格不同','⑤ 不同市场交易时段与停牌会改变图形']},
+  'sw-kline':{title:'一根 K 线包含四个价格',active:'kline',notes:['① 上影线顶端：最高价','② 实体两端：开盘价与收盘价','③ 下影线底端：最低价','④ 每根代表的时间取决于周期设置（日 / 周 / 月）','⑤ 复权方式会改变历史价格，看长周期前先确认']},
+  'sw-ths':{title:'同花顺功能路线示意',active:'ths',notes:['① 搜索证券并核对代码、交易所与品种','② 自选里保存观察对象并写备注','③ 分时、K 线与盘口用于读行情，注意周期设置','④ F10 与公告用于查公司资料，关键数字回原文核对','⑤ 记下「查了什么、数据截至哪天、还缺什么」']},
+  'sw-east':{title:'东方财富功能路线示意',active:'east',notes:['① 自选用于整理研究对象与分组','② 公告看披露日期、报告期与完整原文','③ 财务数据注意同比 / 环比、单季与累计的口径差别','④ 基金页核对类型、跟踪标的、费用与风险等级','⑤ 页面摘要不能替代定期报告']},
+  'sw-tv':{title:'TradingView 图表工作台示意',active:'tv',notes:['① 搜索后确认交易所与数据源，避免同名标的混淆','② 先设图表类型、周期与价格坐标（普通 / 对数）','③ 指标与画线帮助描述历史，不预测未来','④ 提醒触发后仍需重新核对公告与风险','⑤ 跨市场品种的交易时间与单位各不相同']},
+  'sw-tgb':{title:'淘股吧热帖：三色标注法',active:'forum',notes:['① 蓝色：可回到公告核对的事实','② 黄色：作者对事实的解释','③ 红色：尚未发生的预测','④ 关注发布时间、利益关系与风险提示','⑤ 对收费荐股、保证收益类说法保持警惕']},
+  'sw-glossary':{title:'读帖子时，把黑话翻译成普通话',active:'slang',notes:['① 「放量」先找成交量数据与比较期','② 「突破」先问比较区间与周期','③ 「吃肉」是情绪口语，不是收益证据','④ 「明天」之后的结论仍是预测','⑤ 同一个词在不同帖子里含义可能不同']},
+  'sw-screener':{title:'筛选器：把假设写成条件',active:'screener',notes:['① 条件逐行叠加，字段与区间由你决定','② 先写研究假设，再翻译成条件，例如连续 5 年 ROE 大于 15%','③ 注意数据截止日期、口径与是否包含亏损公司','④ 结果是研究名单，不是买入名单','⑤ 放宽或收紧条件，观察结果如何变化']},
+  'sw-research':{title:'一次完整研究：从线索走到结论',active:'research',notes:['① 线索可以来自公告、财报或社区讨论','② 核实：回到交易所与公司披露的原文','③ 计算：把三张报表连成比率与现金流','④ 估值：写出假设、区间与反证','⑤ 结论：记录数据日期、来源与仍不确定的地方']}
 };
 function softwarePlot(kind){
   if(kind==='book') return '<div class="sw-book"><div><b>卖三</b><span>10.03</span><small>120 手</small></div><div><b>卖二</b><span>10.02</span><small>90 手</small></div><div class="sw-key"><b>卖一 ①</b><span>10.01</span><small>160 手</small></div><div class="sw-spread">买卖价差 0.01 元 ③</div><div class="sw-key"><b>买一 ②</b><span>10.00</span><small>230 手</small></div><div><b>买二</b><span>9.99</span><small>80 手</small></div><div><b>买三</b><span>9.98</span><small>110 手</small></div></div>';
   if(kind==='kline') return '<div class="sw-kline-demo"><div class="sw-candle"><span class="sw-high">① 高 10.50</span><i></i><em></em><span class="sw-low">③ 低 9.80</span></div><div class="sw-ohlc"><b>日 K（示意）</b><span>开 10.00</span><span>收 10.30</span><span>高 10.50</span><span>低 9.80</span><small>② 实体两端是开 / 收</small></div></div>';
   if(kind==='forum'||kind==='slang') return '<div class="sw-post"><div class="sw-post-head">社区帖子 · 虚构示例 <span>09:35 发布</span></div><p><mark class="fact">公司昨日发布了公告。</mark> <mark class="opinion">我认为市场还没充分理解。</mark> <mark class="guess">明天一定继续涨。</mark></p><div class="sw-post-foot">事实 → 公告原文　观点 → 作者解释　预测 → 等待验证</div></div>';
+  if(kind==='screener') return '<div class="sw-screen"><div class="sw-screen-cond"><b>筛选条件 ① · 虚构示例</b><span>连续 5 年净资产收益率 ＞ 15%</span><span>资产负债率 ＜ 50%</span><span>经营活动现金流为正 ②</span><span>剔除 ST 与上市未满 1 年</span></div><div class="sw-screen-result"><b>结果 12 家</b><span>数据截至 20XX-XX-XX ③</span><span>示意公司 A　示意公司 B　示意公司 C</span><small>④ 下一步：逐家核对公告与年报，而不是直接下单</small></div></div>';
+  if(kind==='research') return '<div class="sw-flow"><div>① 线索</div><i>→</i><div>② 核实公告</div><i>→</i><div>③ 读财报</div><i>→</i><div>④ 算比率</div><i>→</i><div>⑤ 估值区间</div><i>→</i><div>⑥ 结论与反证</div></div>';
   let line=kind==='intraday'?'18,83 58,72 96,82 135,48 174,56 215,35 254,52 291,23 330,35 370,18':'18,82 58,73 96,79 135,57 174,65 215,42 254,48 291,31 330,40 370,22';
   return '<div class="sw-chart"><div class="sw-chart-head"><span>示例证券 000000</span><b>10.20</b><small>+2.00%</small></div><svg viewBox="0 0 390 150" role="img" aria-label="虚构价格与成交量示意图"><line x1="15" y1="34" x2="377" y2="34"/><line x1="15" y1="70" x2="377" y2="70"/><line x1="15" y1="106" x2="377" y2="106"/><polyline class="sw-average" points="18,77 100,71 180,62 260,51 370,43"/><polyline class="sw-price" points="'+line+'"/><path class="sw-volume" d="M27 146v-20 M55 146v-13 M84 146v-20 M112 146v-33 M141 146v-23 M169 146v-30 M198 146v-16 M226 146v-36 M255 146v-22 M283 146v-43 M312 146v-31 M340 146v-25 M368 146v-39"/></svg><div class="sw-axis"><span>09:30</span><span>11:30</span><span>15:00</span></div></div>';
 }
 function softwareMock(kind){
-  if(kind==='book'||kind==='kline'||kind==='forum'||kind==='slang') return softwarePlot(kind);
+  if(kind==='book'||kind==='kline'||kind==='forum'||kind==='slang'||kind==='screener'||kind==='research') return softwarePlot(kind);
   let labels={
     watch:['自选分组 ①','指数基金','待读财报','已核对公告'],
     quote:['行情字段 ①','最新价','昨收','成交额'],
