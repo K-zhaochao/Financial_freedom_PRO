@@ -1,0 +1,108 @@
+# 把 dist/ 发布到 GitHub Pages。
+# 使用前置条件：仓库 Settings → Pages → Build and deployment → Source 选择 "GitHub Actions"。
+# 站点文件全部在 dist/，因此不能用「分支根目录」方式发布。
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    # 站点文件或本工作流变化时重新发布；改 README 之类不会触发
+    paths:
+      - 'dist/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+# GITHUB_TOKEN 的权限：读代码、写 Pages、签发 OIDC
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个发布；发布中不打断，排队等待
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate site files
+        run: |
+          set -e
+          echo "--- JS syntax ---"
+          for f in dist/content.js dist/software-content.js dist/visuals.js dist/software-visuals.js dist/site.js dist/books-index.js; do
+            node --check "$f"
+            echo "ok  $f"
+          done
+          echo "--- required files ---"
+          test -f dist/index.html
+          test -f dist/portal.css
+          test -f dist/software.css
+          echo "ok  入口与样式文件齐全"
+
+      - name: Check for absolute asset paths
+        run: |
+          # 项目站点部署在 /<repo>/ 子路径下，以 / 开头的引用会 404
+          if grep -rnE '(src|href)="/[^/]' dist --include='*.html' --include='*.js'; then
+            echo "::error::发现以 / 开头的绝对路径，项目站点（子路径）会 404"
+            exit 1
+          fi
+          echo "ok  未发现绝对路径引用"
+
+      - name: Check book manifest against files
+        run: |
+          node -e "
+            const fs=require('fs');
+            const src=fs.readFileSync('dist/books-index.js','utf8');
+            const m=src.match(/const bookFiles = (\[[\s\S]*?\]);/);
+            if(!m){console.error('books-index.js 里找不到 bookFiles');process.exit(1)}
+            const list=JSON.parse(m[1]);
+            let missing=0,bytes=0;
+            for(const item of list){
+              const p='dist/'+item.file;
+              if(!fs.existsSync(p)){console.error('missing',item.file);missing++;continue}
+              bytes+=fs.statSync(p).size;
+            }
+            console.log('清单条目',list.length,'缺失',missing,'PDF 合计',(bytes/1048576).toFixed(1),'MB');
+            process.exit(missing?1:0);
+          "
+
+      - name: Report site size
+        run: |
+          du -sh dist
+          echo "GitHub Pages 站点上限 1 GB，单文件上限 100 MB"
+          find dist -type f -size +100M -print | while read -r f; do
+            echo "::error file=$f::单文件超过 100 MB，GitHub Pages 会拒绝发布"
+            exit 1
+          done
+          echo "体积检查通过"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

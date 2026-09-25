@@ -37,6 +37,28 @@ python -m http.server 4173 --directory dist
 
 然后访问 [http://localhost:4173](http://localhost:4173)。
 
+## 部署（GitHub Pages）
+
+站点文件都在 `dist/`，所以用 GitHub Actions 发布，而不是「分支根目录」方式：
+
+1. 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
+2. 推送到 `main`（且改动涉及 `dist/**` 或工作流本身）时自动触发 [.github/workflows/pages.yml](.github/workflows/pages.yml)，也可以在该工作流页面点 **Run workflow** 手动触发。
+3. 发布地址：`https://<用户名>.github.io/<仓库名>/`，例如 `https://k-zhaochao.github.io/Financial_freedom_PRO/`。工作流的 `deploy` 步骤会把真实地址打印在运行日志与 Job Summary 里。
+
+工作流在发布前会做四道检查，任何一道失败都会中止发布：
+
+- 逐个 `node --check` 前端脚本，避免语法错误上线；
+- 检查入口与样式文件是否齐全；
+- 扫描 `src="/..."`、`href="/..."` 这类绝对路径（项目站点在子路径下会 404）；
+- 校验 `books-index.js` 清单里的每个 PDF 是否真实存在，并统计体积，同时拦截超过 100 MB 的单文件（GitHub Pages 硬限制）。
+
+注意事项：
+
+- GitHub Pages 的**发布站点上限 1 GB**，当前约 158 MB（含 143 MB PDF）；若以后精简书目，用 `node _research/tools/sync-books.mjs --set=core` 只发布核心 9 册。
+- 站点是公开的，PDF 版权与下架要求见 [BOOKS-NOTICE.md](BOOKS-NOTICE.md)。
+- 想绑定自定义域名（例如现有的 `lc.royi.net`）：在 Pages 设置里填 Custom domain，并按提示到 DNS 服务商添加 `CNAME` 记录指向 `<用户名>.github.io`；若该域名已指向其它托管，需要先改 DNS，否则会冲突。
+- 学习进度存在访客浏览器本地（`localStorage`），与服务端无关，换域名会各自独立。
+
 ## 项目结构
 
 ```text
@@ -52,7 +74,9 @@ dist/
 ├── software-visuals.js    盘面与软件示意图
 ├── site.js                课程导航、搜索、书架与在线阅读
 ├── books/                 参考书 PDF（17 册，见 BOOKS-NOTICE.md）
+├── .nojekyll              跳过 Jekyll 处理（GitHub Pages）
 └── images/                课程配图
+.github/workflows/pages.yml  GitHub Pages 发布工作流
 .openai/hosting.json       静态站点部署配置
 BOOKS-NOTICE.md            PDF 收录声明、侵权联系与撤下方式
 ```
