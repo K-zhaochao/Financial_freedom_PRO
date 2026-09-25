@@ -3,7 +3,8 @@ const stages = [
   { id: 'market', name: '认识投资工具', subtitle: '看懂收益从哪来、风险在哪', level:'入门', icon: '02', color: '#7bc7b8' },
   { id: 'fund', name: '基金入门', subtitle: '从指数基金建立方法', level:'入门', icon: '03', color: '#98b7ff' },
   { id: 'stock', name: '股票与财报', subtitle: '先研究企业，再讨论价格', level:'进阶', icon: '04', color: '#f29b8d' },
-  { id: 'portfolio', name: '组合与心态', subtitle: '形成能长期执行的规则', level:'高级', icon: '05', color: '#c5a7e8' }
+  { id: 'portfolio', name: '组合与心态', subtitle: '形成能长期执行的规则', level:'高级', icon: '05', color: '#c5a7e8' },
+  { id: 'software', name: '软件实战', subtitle: '看懂盘面、工具与社区语言', level:'实操', icon: '06', color: '#78b9e6' }
 ];
 
 const books = {
