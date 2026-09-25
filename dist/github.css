@@ -1,0 +1,5 @@
+.utility-actions .github-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:25px;padding:2px 9px;border:1px solid rgba(255,255,255,.65);color:#fff;text-decoration:none;font:700 12px/1.2 "Microsoft YaHei",Arial,sans-serif;white-space:nowrap}
+.utility-actions .github-button:hover{background:#fff;color:#014886}
+.utility-actions .github-button:focus-visible{outline:2px solid #ffda61;outline-offset:2px}
+.github-button svg{display:block;width:15px;height:15px;flex:none}
+@media(max-width:720px){.utility-actions .github-button{min-height:24px;padding:3px 7px}.utility-actions{gap:8px}}
