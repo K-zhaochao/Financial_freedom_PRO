@@ -51,12 +51,12 @@ const lessonVisuals = {
 };
 
 const stageIllustrations = {
-  goal:['stage-start.png','把日常、应急和长期目标分开，才知道每笔钱该去哪。'],
-  securities:['stage-market.png','股票、债券和基金代表不同的权利与风险。'],
-  index:['stage-fund.png','指数基金是一篮子资产，定期投入是执行节奏。'],
-  business:['stage-stock.png','股票研究要回到真实企业和三张财务报表。'],
-  allocation:['stage-portfolio.png','资产配置是为不同目标分配不同的风险。'],
-  psychology:['psychology.png','市场热闹时，给自己一段核对规则的时间。']
+  goal:['stage-start.webp','把日常、应急和长期目标分开，才知道每笔钱该去哪。'],
+  securities:['stage-market.webp','股票、债券和基金代表不同的权利与风险。'],
+  index:['stage-fund.webp','指数基金是一篮子资产，定期投入是执行节奏。'],
+  business:['stage-stock.webp','股票研究要回到真实企业和三张财务报表。'],
+  allocation:['stage-portfolio.webp','资产配置是为不同目标分配不同的风险。'],
+  psychology:['psychology.webp','市场热闹时，给自己一段核对规则的时间。']
 };
 
 function renderIllustration(id) {
